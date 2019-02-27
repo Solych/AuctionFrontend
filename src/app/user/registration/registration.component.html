@@ -1,3 +1,9 @@
-<p>
-  registration works!
-</p>
+<form #registrationForm="ngForm">
+  <input type="text" pInputText [(ngModel)]="username" name="username" placeholder="Username" required>
+  <input type="password" pPassword [(ngModel)]="password1" name="password1" placeholder="Password" required/>
+  <input type="password" pPassword [(ngModel)]="password2" name="password2" placeholder="Password" required/>
+  <input type="email" pInputText [(ngModel)]="mail" name="mail" placeholder="e-mail" required>
+  <input type="text" pInputText [(ngModel)]="place" name="place" placeholder="Place">
+</form>
+<button pButton label="Register" (click)="register()"></button>
+<button pButton label="Close" (click)="close()"></button>
