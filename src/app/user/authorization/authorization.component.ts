@@ -2,9 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../shared/user.service';
 import {HelperService} from '../../shared/helper.service';
-import {invalidCredentials, invalidForm, severityError} from '../../core/constants';
 import {Admission} from '../../shared/model/Admission';
 import {Router} from '@angular/router';
+import {invalidCredentials, invalidForm, severityError} from '../../constants/Constants';
 
 @Component({
   selector: 'app-authorization',
@@ -23,18 +23,18 @@ export class AuthorizationComponent implements OnInit {
   }
 
   login() {
-    if (this.form.invalid) {
+    if (!this.form.invalid) {
+      this.userService.login(new Admission(this.username, this.password)).subscribe(data => { // returns token
+        this.setTokenToLocalStorage(data);
+      }, error => {
+        this.helperService.showMsg(severityError, invalidCredentials);
+        this.password = null;
+        this.username = null;
+      });
+    } else {
       this.helperService.showMsg(severityError, invalidForm);
       return;
     }
-
-    this.userService.login(new Admission(this.username, this.password)).subscribe(data => { // returns token
-      this.setTokenToLocalStorage(data);
-    }, error => {
-      this.helperService.showMsg(severityError, invalidCredentials);
-      this.password = null;
-      this.username = null;
-    });
   }
 
   register() {

@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 import {HelperService} from '../../shared/helper.service';
 import {UserService} from '../../shared/user.service';
 import {NgForm} from '@angular/forms';
-import {invalidForm, invalidPassword, severityError} from '../../core/constants';
 import {User} from '../../shared/model/User';
+import {invalidPassword, severityError} from '../../constants/Constants';
 
 @Component({
   selector: 'app-registration',
@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
 
   register() {
     if (this.registrationForm.invalid || this.password1 !== this.password2) {
-      this.helperService.showMsg(severityError, invalidForm);
+      this.helperService.showMsg(severityError, invalidPassword);
       this.registrationForm.reset();
       return;
     }
