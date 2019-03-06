@@ -5,14 +5,14 @@
     <input type="text" pInputText [(ngModel)]="username" name="username" placeholder="Username" required>
     <input type="password" pPassword [(ngModel)]="password1" name="password1" placeholder="Password" required/>
     <input type="password" pPassword [(ngModel)]="password2" name="password2" placeholder="Repeat password" required/>
-    <input type="email" pInputText [(ngModel)]="mail" name="mail" placeholder="e-mail" required>
+    <input type="email" pInputText [(ngModel)]="mail" name="mail" placeholder="E-mail" required>
     <input type="text" pInputText [(ngModel)]="place" name="place" placeholder="Place">
     </div>
     <div class="register_bttn">
-    <button pButton label="Register" class="register_button" (click)="register()" [disabled]="registrationForm.invalid"></button>
+    <button pButton label="Register" class="ui-button-success" style="margin-top:17px;" (click)="register()" [disabled]="registrationForm.invalid"></button>
     </div>
     <div class="close_bttn">
-    <button pButton label="Close" (click)="close()" class="close_button"></button>
+    <button pButton label="Close" (click)="close()" icon="pi pi-times" class="ui-button-danger"></button>
     </div>
   </form>
 </div>
