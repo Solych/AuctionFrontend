@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
-    if (this.registrationForm.invalid || this.password1 !== this.password2) {
+    if (this.password1 !== this.password2) {
       this.helperService.showMsg(severityError, invalidPassword);
       this.registrationForm.reset();
       return;

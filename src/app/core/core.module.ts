@@ -25,7 +25,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ThingService,
     UserService,
     MessageService,
-    HelperService
+    HelperService,
   ]
 })
 export class CoreModule { }

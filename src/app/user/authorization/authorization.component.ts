@@ -17,24 +17,21 @@ export class AuthorizationComponent implements OnInit {
   password: string;
   username: string;
 
-  constructor(private userService: UserService, private helperService: HelperService, private route: Router) { }
+  constructor(private userService: UserService, private helperService: HelperService, private route: Router) {
+  }
 
   ngOnInit() {
   }
 
   login() {
-    if (!this.form.invalid) {
-      this.userService.login(new Admission(this.username, this.password)).subscribe(data => { // returns token
-        this.setTokenToLocalStorage(data);
-      }, error => {
-        this.helperService.showMsg(severityError, invalidCredentials);
-        this.password = null;
-        this.username = null;
-      });
-    } else {
-      this.helperService.showMsg(severityError, invalidForm);
-      return;
-    }
+    this.userService.login(new Admission(this.username, this.password)).subscribe(data => { // returns token
+      this.setTokenToLocalStorage(data);
+      this.route.navigate(['auction']);
+    }, error => {
+      this.helperService.showMsg(severityError, invalidCredentials);
+      this.password = null;
+      this.username = null;
+    });
   }
 
   register() {

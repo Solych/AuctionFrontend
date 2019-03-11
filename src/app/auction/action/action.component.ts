@@ -7,14 +7,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./action.component.less']
 })
 export class ActionComponent implements OnInit {
-
   constructor(private route: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   goToLogin() {
     this.route.navigate(['login']);
   }
-
 }
