@@ -1,0 +1,12 @@
+<div>
+  <button pButton icon="pi pi-home" label="Home" (click)="homePage()"></button>
+  <div class="ui-g-12 ui-md-4">
+    <div class="ui-inputgroup">
+      <button pButton icon="pi pi-search" (click)="search()" type="button" label="Search"></button>
+      <input type="text" [(ngModel)]="name" pInputText placeholder="Input a name of lot">
+    </div>
+  </div>
+  <button pButton label="Login" (click)="goToLogin()"></button>
+
+  <button pButton label="Help" (click)="help()"></button>
+</div>
