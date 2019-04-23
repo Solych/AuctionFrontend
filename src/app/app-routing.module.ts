@@ -3,7 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {RegistrationComponent} from './user/registration/registration.component';
 import {AuthorizationComponent} from './user/authorization/authorization.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
-import {ActionComponent} from './auction/action/action.component';
 import {ThingDetailComponent} from './auction/thing-detail/thing-detail.component';
 import {HelpComponent} from './shared/help/help.component';
 
@@ -15,10 +14,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: AuthorizationComponent
-  },
-  {
-    path: 'auction',
-    component: ActionComponent
   },
   {
     path: 'home',
