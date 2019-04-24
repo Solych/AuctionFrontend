@@ -9,6 +9,7 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {HelperService} from '../shared/helper.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CategoryService} from '../shared/category.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UserService,
     MessageService,
     HelperService,
+    CategoryService
   ]
 })
 export class CoreModule { }

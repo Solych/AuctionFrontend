@@ -10,8 +10,23 @@ import {Subscription} from 'rxjs';
 export class AreaComponent implements OnInit, OnDestroy {
   sub: Subscription;
   name: string;
+  categories: any[];
 
-  constructor(private router: ActivatedRoute) { }
+  constructor(private router: ActivatedRoute) {
+    this.categories = [
+      {
+        label: 'Auto',
+        value: 1
+      },
+      {
+        label: 'House',
+        value: 2
+      },
+      {
+        label: 'Books',
+        value: 3
+      }];
+  }
 
   ngOnInit() {
     this.sub = this.router.queryParams.subscribe(params => {

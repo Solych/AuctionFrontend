@@ -4,6 +4,8 @@ import {ThingDetailComponent} from './thing-detail/thing-detail.component';
 import {ButtonModule} from 'primeng/button';
 import {SharedModule} from '../shared/shared.module';
 import {AreaComponent} from './area/area.component';
+import {ListboxModule} from 'primeng/listbox';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import {AreaComponent} from './area/area.component';
   imports: [
     CommonModule,
     ButtonModule,
-    SharedModule
+    SharedModule,
+    ListboxModule,
+    FormsModule
   ]
 })
 export class AuctionModule { }

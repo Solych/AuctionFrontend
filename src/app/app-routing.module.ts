@@ -5,6 +5,7 @@ import {AuthorizationComponent} from './user/authorization/authorization.compone
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {ThingDetailComponent} from './auction/thing-detail/thing-detail.component';
 import {HelpComponent} from './shared/help/help.component';
+import {AreaComponent} from './auction/area/area.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'help',
     component: HelpComponent
+  },
+  {
+    path: 'auction',
+    component: AreaComponent
   },
   {
     path: '**',
