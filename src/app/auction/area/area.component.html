@@ -1,4 +1,47 @@
 <app-header></app-header>
-<div class="categories">
-  <p-listbox [options]="categories" [(ngModel)]="selectedCategory"></p-listbox>
+<div class="content">
+  <div class="categories">
+    <p-listbox [options]="categories" (ngModelChange)="changeCategory()" [(ngModel)]="selectedCategory"></p-listbox>
+  </div>
+  <div class="area__auction">
+    <table >
+      <tbody>
+      <tr>
+        <td>123 </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 345</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 567</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

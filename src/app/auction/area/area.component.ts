@@ -1,6 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {CategoryService} from '../../shared/category.service';
+import {ThingService} from '../../shared/thing.service';
+import {HelperService} from '../../shared/helper.service';
+import {severityError} from '../../constants/Constants';
 
 @Component({
   selector: 'app-area',
@@ -11,8 +15,9 @@ export class AreaComponent implements OnInit, OnDestroy {
   sub: Subscription;
   name: string;
   categories: any[];
+  selectedCategory: number;
 
-  constructor(private router: ActivatedRoute) {
+  constructor(private router: ActivatedRoute, private thingService: ThingService, private helperService: HelperService) {
     this.categories = [
       {
         label: 'Auto',
@@ -36,6 +41,14 @@ export class AreaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  changeCategory() {
+    this.thingService.getThingsByCategories(this.selectedCategory).subscribe(data => {
+
+    }, error => {
+      this.helperService.showMsg(severityError, error.error.message);
+    });
   }
 
 }
