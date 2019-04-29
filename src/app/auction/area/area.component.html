@@ -4,44 +4,11 @@
     <p-listbox [options]="categories" (ngModelChange)="changeCategory()" [(ngModel)]="selectedCategory"></p-listbox>
   </div>
   <div class="area__auction">
-    <table >
-      <tbody>
-      <tr>
-        <td>123 </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 345</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 567</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-      </tr>
-      </tbody>
-    </table>
+    <ul>
+     <li style="float: left; width: 25%" *ngFor="let lot of lots">
+        <img src="{{lot.pic}}" width="200" height="250">
+        {{lot.price}}
+     </li>
+    </ul>
   </div>
 </div>
