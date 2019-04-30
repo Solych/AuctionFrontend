@@ -5,10 +5,17 @@
   </div>
   <div class="area__auction">
     <ul>
-     <li style="float: left; width: 25%" *ngFor="let lot of lots">
-        <img src="{{lot.pic}}" width="200" height="250">
-        {{lot.price}}
-     </li>
+        <li style="float: left; width: 25%" *ngFor="let lot of lots">
+          <div class="card">
+            <p class="name">{{lot.name}}</p>
+            <img src="{{lot.pic}}" (click)="thingDetails(lot)" width="200" height="250">
+            <p>Price: {{lot.price}}</p>
+          </div>
+        </li>
     </ul>
+    <div class="bttn_random_lot">
+      <button pButton icon="pi pi-question" (click)="thingDetailRandom()" label="Random lot"></button>
+    </div>
   </div>
+
 </div>
