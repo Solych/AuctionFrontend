@@ -1,4 +1,21 @@
 <app-header></app-header>
-<p>
-  thing-detail works!
-</p>
+<div class="content">
+  <div class="area__details">
+    <p>{{thing.endDate}}</p>
+
+    <div class="left__area">
+      <p>{{thing.name}}</p>
+      <img (click)="showModal()" src="{{thing.picture}}" width="400" height="450">
+    </div>
+    <div class="right__area">
+      <span>Price: {{thing.price}}</span>
+      <span>
+    <button pButton label="Amount of bets"></button>
+  </span>
+      <div>
+        <input type="number" [(ngModel)]="newThingPrice">
+        <button pButton label="Bet"></button>
+      </div>
+    </div>
+  </div>
+</div>
