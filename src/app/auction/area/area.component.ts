@@ -5,6 +5,7 @@ import {ThingService} from '../../shared/thing.service';
 import {HelperService} from '../../shared/helper.service';
 import {severityError} from '../../constants/Constants';
 import {Thing} from '../../shared/model/Thing';
+import {CategoryService} from '../../shared/category.service';
 
 @Component({
   selector: 'app-area',
@@ -19,7 +20,7 @@ export class AreaComponent implements OnInit, OnDestroy {
   lots: any[];
 
   constructor(private router: ActivatedRoute, private thingService: ThingService, private helperService: HelperService,
-              private route: Router) {
+              private route: Router, private categoryService: CategoryService) {
     this.categories = [
       {
         label: 'Auto',
@@ -78,8 +79,14 @@ export class AreaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.findAllCategories();
     this.sub = this.router.queryParams.subscribe(params => {
       this.name = params.name;
+      this.thingService.getThingsByName(this.name).subscribe(data => {
+        this.lots = data;
+      }, error => {
+        this.helperService.showMsg(severityError, error.error.message);
+      });
     });
   }
 
@@ -89,18 +96,33 @@ export class AreaComponent implements OnInit, OnDestroy {
 
   changeCategory() {
     this.thingService.getThingsByCategories(this.selectedCategory).subscribe(data => {
-
+      this.lots = data;
     }, error => {
       this.helperService.showMsg(severityError, error.error.message);
     });
   }
 
   thingDetails(lot: Thing) {
-    this.route.navigate(['thing']);
+    this.route.navigate(['thing'], {queryParams: {id: lot.id}});
   }
 
   thingDetailRandom() {
-    this.route.navigate(['thing']);
+    this.route.navigate(['thing'], {queryParams: {random: true}});
+  }
+
+  private findAllCategories() {
+    this.categoryService.getAllCategories().subscribe(data => {
+      this.categories = this.modifyToList(data);
+    }, error => {
+      this.helperService.showMsg(severityError, error.error.message);
+    });
+  }
+
+  private modifyToList(data) {
+    const categories = [];
+    for (const category of data) {
+      categories.push({label: category.name, value: category.id});
+    }
   }
 
 }

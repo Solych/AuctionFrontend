@@ -8,8 +8,11 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   name: string;
+  isLogged: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.isLogged = true;
+  }
 
   ngOnInit() {
   }
@@ -27,7 +30,10 @@ export class HeaderComponent implements OnInit {
   }
 
   search() {
-    this.router.navigate(['auction', { queryParams: { name: this.name } }]);
+    this.router.navigate(['auction'], { queryParams: { name: this.name } });
   }
 
+  goToUserDetails() {
+    this.router.navigate(['home']);
+  }
 }

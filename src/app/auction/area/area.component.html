@@ -2,17 +2,26 @@
 <div class="content">
   <div class="categories">
     <p-listbox [options]="categories" (ngModelChange)="changeCategory()" [(ngModel)]="selectedCategory"></p-listbox>
+    <div class="filters" *ngIf="selectedCategory">
+      Filters
+      <button pButton label="By name"></button>
+      <button pButton label="By date"></button>
+      <button pButton label="By price"></button>
+    </div>
   </div>
   <div class="area__auction">
     <ul>
-        <li style="float: left; width: 25%" *ngFor="let lot of lots">
-          <div class="card">
-            <p class="name">{{lot.name}}</p>
-            <img src="{{lot.pic}}" (click)="thingDetails(lot)" width="200" height="250">
-            <p>Price: {{lot.price}}</p>
-          </div>
-        </li>
+      <li style="float: left; width: 25%" *ngFor="let lot of lots">
+        <div class="card">
+          <p class="name">{{lot.name}}</p>
+          <img src="{{lot.pic}}" (click)="thingDetails(lot)" width="200" height="250">
+          <p>Price: {{lot.price}}</p>
+        </div>
+      </li>
     </ul>
+    <div *ngIf="selectedCategory">
+      <p-paginator></p-paginator>
+    </div>
     <div class="bttn_random_lot">
       <button pButton icon="pi pi-question" (click)="thingDetailRandom()" label="Random lot"></button>
     </div>

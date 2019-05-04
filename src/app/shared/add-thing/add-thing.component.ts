@@ -29,8 +29,4 @@ export class AddThingComponent implements OnInit {
   ngOnInit() {
   }
 
-  onBasicUploadAuto(event) {
-    console.log(event);
-  }
-
 }

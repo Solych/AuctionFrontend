@@ -8,6 +8,11 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
+  /**
+   * fields: name, id
+   * of categories
+   */
   getAllCategories() {
+    return this.httpClient.get('categories');
   }
 }
