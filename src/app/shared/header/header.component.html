@@ -1,5 +1,5 @@
 <div class="header">
-  <button pButton icon="pi pi-home" label="Home" class="home_bttn" (click)="homePage()"></button>
+  <button pButton icon="pi pi-home" label="Auction" class="home_bttn" (click)="homePage()"></button>
   <div>
   <button pButton icon="pi pi-search" (click)="search()" [disabled]="!name || name.length < 0" type="button" label="Search"></button>
   <input type="text" [(ngModel)]="name" pInputText placeholder="Enter the name of the lot">

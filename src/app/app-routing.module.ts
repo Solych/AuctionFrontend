@@ -6,6 +6,7 @@ import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {ThingDetailComponent} from './auction/thing-detail/thing-detail.component';
 import {HelpComponent} from './shared/help/help.component';
 import {AreaComponent} from './auction/area/area.component';
+import {AddThingComponent} from './shared/add-thing/add-thing.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'auction',
     component: AreaComponent
+  },
+  {
+    path: 'new',
+    component: AddThingComponent
   },
   {
     path: '**',

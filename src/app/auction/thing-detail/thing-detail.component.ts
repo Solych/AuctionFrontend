@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Thing} from '../../shared/model/Thing';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-thing-detail',
@@ -10,7 +11,7 @@ export class ThingDetailComponent implements OnInit {
   thing: Thing;
   newThingPrice: number;
 
-  constructor() {
+  constructor(private router: Router) {
     this.thing = {
       description: 'TAFASJFASJFAKSJFKAJSFJKas',
       id: 4,
@@ -28,6 +29,10 @@ export class ThingDetailComponent implements OnInit {
 
   showModal() {
 
+  }
+
+  goToAddThing() {
+    this.router.navigate(['new']);
   }
 
 }

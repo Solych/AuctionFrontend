@@ -1,21 +1,28 @@
 <app-header></app-header>
 <div class="content">
   <div class="area__details">
-    <p>{{thing.endDate}}</p>
-
+    <div class="name__lot">
+      {{thing.name}}
+    </div>
     <div class="left__area">
-      <p>{{thing.name}}</p>
+      Expiration date: {{thing.endDate}}
       <img (click)="showModal()" src="{{thing.picture}}" width="400" height="450">
     </div>
     <div class="right__area">
-      <span>Price: {{thing.price}}</span>
-      <span>
-    <button pButton label="Amount of bets"></button>
-  </span>
-      <div>
+      <div class="price__amount">
+        Price: {{thing.price}}
+        <button class="amount_bttn" pButton label="Amount of bets"></button>
         <input type="number" [(ngModel)]="newThingPrice">
-        <button pButton label="Bet"></button>
+        <button class="bet_bttn" pButton label="Bet!"></button>
       </div>
     </div>
+
+  </div>
+  <div class="description__thing">
+    <p>Description</p>
+    {{thing.description}}
+  </div>
+  <div class="bttn_put_lot">
+    <button pButton (click)="goToAddThing()" label="Put a lot"></button>
   </div>
 </div>

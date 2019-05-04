@@ -1,18 +1,64 @@
-.left__area {
-  float: left;
-  text-align: center;
-}
-.left__area p {
-  font-size: 21px;
-}
-.right__area {
-  float: right;
-}
-
 .content .area__details {
+  display: flex;
+  justify-content: space-around;
   width:1000px;
   margin: 0 auto;
 }
-.area__details p {
+.content .left__area {
   text-align: center;
 }
+
+.left__area {
+  color: black;
+  font-size: 21px;
+}
+.name__lot {
+  font-size: 24px;
+  color: black;
+}
+.left__area img {
+  margin-top: 25px;
+}
+.right__area {
+  color: black;
+  text-decoration: underline;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right__area .price__amount {
+  font-size: 20px;
+  color: black;
+}
+
+.right__area .amount_bttn {
+  margin-left: 37px;
+}
+
+.right__area input {
+  margin-top: 36px;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid darkgray;
+  border-radius: 3px;
+  width: 180px;
+}
+
+.right__area .bet_bttn {
+  font-size: 16px;
+  margin-left: 29px;
+  background-color: darkgray;
+  border: 1px solid darkgray;
+}
+
+.description__thing p{
+  word-break: break-all;
+  font-size: 33px
+}
+.bttn_put_lot button {
+  font-size: 23px;
+  margin-right: 30px;
+  float: right;
+}
+

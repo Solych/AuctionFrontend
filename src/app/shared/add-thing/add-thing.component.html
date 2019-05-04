@@ -1,4 +1,29 @@
 <app-header></app-header>
-<p>
-  add-thing works!
-</p>
+<div class="content">
+  <div class="area_creating">
+    <p class="creating_lot">Lot creation</p>
+    <div class="data__creation">
+      <p>Data</p>
+      <div class="data">
+        <input pInput type="text" placeholder="Name" [(ngModel)]="name" id="input_name">
+        <p-dropdown [(ngModel)]="selectedCategory" placeholder="Select a category" [options]="categories"></p-dropdown>
+        <input type="file" id="file" style="display: none">
+        <label for="file">Select a file</label>
+      </div>
+    </div>
+    <div class="price__date">
+      <p>Price, date</p>
+      <div class="union__fields">
+        <input pInput placeholder="Price" type="text" [(ngModel)]="price">
+        <p-calendar [(ngModel)]="date" placeholder="Expiration date" [showTime]="true"></p-calendar>
+      </div>
+    </div>
+    <div class="description__creation">
+      <p>Description</p>
+      <textarea pInputTextarea [(ngModel)]="description"></textarea>
+    </div>
+    <div class="button__put">
+      <button pButton style="float: right" label="Confirm" ></button>
+    </div>
+  </div>
+</div>

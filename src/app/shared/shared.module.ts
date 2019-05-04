@@ -5,6 +5,10 @@ import {HeaderComponent} from './header/header.component';
 import {HelpComponent} from './help/help.component';
 import {FormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
+import {FileUploadModule} from 'primeng/fileupload';
+import {DropdownModule} from 'primeng/primeng';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import {ButtonModule} from 'primeng/button';
   imports: [
     CommonModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    FileUploadModule,
+    DropdownModule,
+    InputTextareaModule,
+    CalendarModule
   ],
   exports: [
     AddThingComponent,
