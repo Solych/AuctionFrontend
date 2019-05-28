@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="content">
+  <div class="categories">
+    <p-listbox [options]="categories" (onChange)="changeCategory()" [(ngModel)]="selectedCategory"></p-listbox>
+    <div class="filters" *ngIf="selectedCategory">
+      Filters
+      <button (click)="sortByName()" pButton label="By name"></button>
+      <button pButton (click)="sortByDate()" label="By date"></button>
+      <button pButton (click)="sortByPrice()" label="By price"></button>
+    </div>
+  </div>
+  <div class="area__auction">
+    <ul>
+      <li style="float: left; width: 25%" *ngFor="let lot of lots">
+        <div class="card">
+          <p class="name">{{lot.name}}</p>
+          <img src="{{lot.pic}}" (click)="thingDetails(lot)" width="200" height="250">
+          <p>Price: {{lot.price}}</p>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="selectedCategory">
+      <button pButton style="float:left" icon="pi pi-step-backward" (click)="goToPreviousPage()" label="Previous page"></button>
+      <button pButton icon="pi pi-step-forward" style="float: right" (click)="goToNextPage()" label="Next page"></button>
+    </div>
+    <div class="bttn_random_lot">
+      <button pButton icon="pi pi-question" (click)="thingDetailRandom()" label="Random lot"></button>
+    </div>
+  </div>
+
+</div>
