@@ -7,5 +7,5 @@ export class Thing {
   endDate: string;
   name: string;
   description: string;
-} git init
-git add .
+}
+
