@@ -17,6 +17,16 @@ export class HelperService {
   }
 
   public getOwnerIdFromStorage() {
-    return localStorage.getItem('owner');
+    return this.getToken().sub;
+  }
+
+  private getToken() {
+    const token = localStorage.getItem('token');
+    const payload = token.split('.')[1];
+    return JSON.parse(atob(payload));
+  }
+
+  public getExpirationDate() {
+    return this.getToken().exp;
   }
 }

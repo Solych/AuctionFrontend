@@ -7,6 +7,7 @@ import {ThingDetailComponent} from './auction/thing-detail/thing-detail.componen
 import {HelpComponent} from './shared/help/help.component';
 import {AreaComponent} from './auction/area/area.component';
 import {AddThingComponent} from './shared/add-thing/add-thing.component';
+import {RouteGuard} from './route.guard';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'new',
+    canActivate: [RouteGuard],
     component: AddThingComponent
   },
   {

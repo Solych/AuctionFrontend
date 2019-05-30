@@ -10,6 +10,7 @@ import {MessageService} from 'primeng/api';
 import {HelperService} from '../shared/helper.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CategoryService} from '../shared/category.service';
+import {RouteGuard} from '../route.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {CategoryService} from '../shared/category.service';
     UserService,
     MessageService,
     HelperService,
-    CategoryService
+    CategoryService,
+    RouteGuard
   ]
 })
 export class CoreModule { }

@@ -25,7 +25,7 @@ export class AuthorizationComponent implements OnInit {
 
   login() {
     this.userService.login(new Admission(this.username, this.password)).subscribe(data => { // returns token
-      this.setTokenToLocalStorage(data);
+      localStorage.setItem('token', data);
       this.route.navigate(['auction']);
     }, error => {
       this.helperService.showMsg(severityError, invalidCredentials);
@@ -36,10 +36,6 @@ export class AuthorizationComponent implements OnInit {
 
   register() {
     this.route.navigate(['registration']);
-  }
-
-  private setTokenToLocalStorage(token: string) {
-    localStorage.setItem('token', token);
   }
 
 }

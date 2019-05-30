@@ -6,7 +6,6 @@ import {SharedModule} from '../shared/shared.module';
 import {AreaComponent} from './area/area.component';
 import {ListboxModule} from 'primeng/listbox';
 import {FormsModule} from '@angular/forms';
-import {PaginatorModule} from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import {PaginatorModule} from 'primeng/paginator';
     SharedModule,
     ListboxModule,
     FormsModule,
-    PaginatorModule
   ]
 })
 export class AuctionModule { }
