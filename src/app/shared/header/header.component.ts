@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {SharedService} from '../shared.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,14 @@ export class HeaderComponent implements OnInit {
   name: string;
   isLogged: boolean;
 
-  constructor(private router: Router) {
-    this.isLogged = true;
+  constructor(private router: Router, private sharedService: SharedService) {
+    this.isLogged = false;
   }
 
   ngOnInit() {
+    this.sharedService.isLogged.subscribe(data => {
+      this.isLogged = data;
+    });
   }
 
   homePage() {
@@ -30,10 +34,14 @@ export class HeaderComponent implements OnInit {
   }
 
   search() {
-    this.router.navigate(['auction'], { queryParams: { name: this.name } });
+    this.sharedService.name.emit(this.name);
+    this.router.navigate(['auction']);
   }
 
   goToUserDetails() {
+    if (!this.isLogged) {
+      return;
+    }
     this.router.navigate(['home']);
   }
 }

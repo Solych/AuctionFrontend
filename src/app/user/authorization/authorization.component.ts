@@ -4,7 +4,8 @@ import {UserService} from '../../shared/user.service';
 import {HelperService} from '../../shared/helper.service';
 import {Admission} from '../../shared/model/Admission';
 import {Router} from '@angular/router';
-import {invalidCredentials, invalidForm, severityError} from '../../constants/Constants';
+import {invalidCredentials, severityError} from '../../constants/Constants';
+import {SharedService} from '../../shared/shared.service';
 
 @Component({
   selector: 'app-authorization',
@@ -17,20 +18,21 @@ export class AuthorizationComponent implements OnInit {
   password: string;
   username: string;
 
-  constructor(private userService: UserService, private helperService: HelperService, private route: Router) {
+  constructor(private userService: UserService, private helperService: HelperService, private route: Router,
+              private sharedService: SharedService) {
   }
 
   ngOnInit() {
   }
 
   login() {
-    this.userService.login(new Admission(this.username, this.password)).subscribe(data => { // returns token
-      localStorage.setItem('token', data);
+    this.userService.login(new Admission(this.username, this.password)).subscribe((data: any) => {
+      localStorage.setItem('token', data.token);
       this.route.navigate(['auction']);
+      this.sharedService.isLogged.emit(true);
     }, error => {
       this.helperService.showMsg(severityError, invalidCredentials);
       this.password = null;
-      this.username = null;
     });
   }
 

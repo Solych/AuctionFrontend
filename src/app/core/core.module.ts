@@ -11,6 +11,7 @@ import {HelperService} from '../shared/helper.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CategoryService} from '../shared/category.service';
 import {RouteGuard} from '../route.guard';
+import {SharedService} from '../shared/shared.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {RouteGuard} from '../route.guard';
     MessageService,
     HelperService,
     CategoryService,
+    SharedService,
     RouteGuard
   ]
 })

@@ -9,6 +9,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {DropdownModule, InputTextModule} from 'primeng/primeng';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import {CalendarModule} from 'primeng/calendar';
     DropdownModule,
     InputTextareaModule,
     CalendarModule,
-    InputTextModule
+    InputTextModule,
+    DialogModule
   ],
   exports: [
     AddThingComponent,
     HeaderComponent,
-    HelpComponent
+    HelpComponent,
+    DialogModule
   ]
 })
 export class SharedModule { }

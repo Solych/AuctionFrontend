@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {of} from 'rxjs';
 import {Thing} from './model/Thing';
 
 @Injectable({
@@ -11,15 +10,15 @@ export class ThingService {
   constructor(private httpClient: HttpClient) {  }
 
   getThingById(id: number) {
-    return this.httpClient.get(`/thing/${id}`);
+    return this.httpClient.get(`http://localhost:8080/thing/getById/${id}`);
   }
 
   getRandomThings() {
-
+    return this.httpClient.get('http://localhost:8080/thing/getRandom');
   }
 
   getThingsByName(name: string) {
-    return this.httpClient.get(`http://localhost:8080/thing/name/${name}`);
+    return this.httpClient.get(`http://localhost:8080/thing/getThingByName/${name}`);
   }
 
   getThingsByCategories(categoryId: number, page: number) {
@@ -28,5 +27,17 @@ export class ThingService {
 
   save(thing: Thing) {
     return this.httpClient.post(`http://localhost:8080/thing/save`, thing);
+  }
+
+  getOverrides(thingId: number) {
+    return this.httpClient.get(`http://localhost:8080/thing/getDataByThingId/${thingId}`);
+  }
+
+  getRandomNumberId() {
+    return this.httpClient.get(`http://localhost:8080/thing/getRandomIdOfThing`);
+  }
+
+  update(thing: Thing) {
+    return this.httpClient.put('http://localhost:8080/thing/update', thing);
   }
 }

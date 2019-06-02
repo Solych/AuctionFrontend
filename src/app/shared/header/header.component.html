@@ -1,10 +1,10 @@
 <div class="header">
-  <button pButton icon="pi pi-bell" label="Auction" class="home_bttn" (click)="homePage()"></button>
+  <button pButton icon="pi pi-bell" label="Аукцион" class="home_bttn" (click)="homePage()"></button>
   <div>
-  <button pButton icon="pi pi-search" (click)="search()" [disabled]="!name || name.length < 0" type="button" label="Search"></button>
-  <input type="text" [(ngModel)]="name" pInputText placeholder="Enter the name of the lot">
+  <button pButton icon="pi pi-search" (click)="search()" [disabled]="!name || name.length < 0" type="button" label="Поиск"></button>
+  <input type="text" [(ngModel)]="name" pInputText placeholder="Введите название лота">
   </div>
-  <button *ngIf="!isLogged" class="login_bttn" pButton label="Login" (click)="goToLogin()"></button>
-  <button *ngIf="isLogged" class="login_bttn" icon="pi pi-home" pButton label="Home" (click)="goToUserDetails()" ></button>
-  <button pButton label="Help" icon="pi pi-info" class="help_bttn" (click)="help()"></button>
+  <button *ngIf="!isLogged" class="login_bttn" pButton label="Войти" (click)="goToLogin()"></button>
+  <button *ngIf="isLogged" class="login_bttn" icon="pi pi-home" pButton label="Аккаунт" (click)="goToUserDetails()" ></button>
+  <button pButton label="Помощь" icon="pi pi-info" class="help_bttn" (click)="help()"></button>
 </div>

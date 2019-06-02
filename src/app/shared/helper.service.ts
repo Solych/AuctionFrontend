@@ -29,4 +29,12 @@ export class HelperService {
   public getExpirationDate() {
     return this.getToken().exp;
   }
+
+  public isLogged() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return false;
+    }
+    return new Date().getTime() <= this.getExpirationDate();
+  }
 }

@@ -1,6 +1,11 @@
 export const severitySuccess = 'success';
 export const severityError = 'error';
-export const invalidForm = 'Form is not valid';
-export const invalidCredentials = 'Invalid credentials!';
-export const invalidPassword = 'Passwords are not equals';
-export const alreadyOnFirstPage = 'You already on a first page';
+export const invalidForm = 'Заполните необходимые поля';
+export const invalidCredentials = 'Неправильный логин или пароль';
+export const invalidPassword = 'Пароли не одинаковые';
+export const alreadyOnFirstPage = 'Вы уже находитесь на 1 странице';
+export const successCreate = 'Лот успешно выставлен на продажу';
+export const errorCreate = 'Что-то пошло не так';
+export const betsNotFound = 'Ставки на данный лот отсутствуют';
+export const severityInfo = 'info';
+export const tooLowBet = 'Ставка не может быть меньше нынешней цены!';

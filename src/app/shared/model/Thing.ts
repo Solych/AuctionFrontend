@@ -11,6 +11,7 @@ export class Thing {
   dateOfPut: number;
   owner?: User;
   category?: Category;
+  price?: number;
 
   constructor(minPrice: number, name: string, dateOfPut: number, sellingTime: number, owner: number, category: number,
               picture?: string, description?: string) {

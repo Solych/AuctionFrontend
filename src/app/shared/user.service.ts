@@ -13,10 +13,10 @@ export class UserService {
   }
 
   login(admission: Admission): Observable<string> {
-    return this.httpClient.post<string>(`/user/authorize`, admission);
+    return this.httpClient.post<string>(`http://localhost:8080/user/authorize`, admission);
   }
 
   register(user: User): Observable<User> {
-    return this.httpClient.post<User>('/user/register', user);
+    return this.httpClient.post<User>('http://localhost:8080/user/register', user);
   }
 }

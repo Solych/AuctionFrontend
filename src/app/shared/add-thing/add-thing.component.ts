@@ -4,6 +4,7 @@ import {Category} from "../model/Category";
 import {Thing} from "../model/Thing";
 import {HelperService} from "../helper.service";
 import {ThingService} from '../thing.service';
+import {errorCreate, severityError, severitySuccess, successCreate} from '../../constants/Constants';
 
 @Component({
   selector: 'app-add-thing',
@@ -40,10 +41,13 @@ export class AddThingComponent implements OnInit {
   }
 
   save() {
-    console.log(this.date);
     const thing = new Thing(this.price, this.name, new Date().getTime(), this.date, this.helperService.getOwnerIdFromStorage(),
       this.selectedCategory, this.picture, this.description);
-    this.thingService.
+    this.thingService.save(thing).subscribe(data => {
+      this.helperService.showMsg(severitySuccess, successCreate);
+    }, error => {
+      this.helperService.showMsg(severityError, errorCreate);
+    });
   }
 
   private modifyToDropDown(data: Category[]) {

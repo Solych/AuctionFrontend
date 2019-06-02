@@ -1,28 +1,50 @@
 <app-header></app-header>
-<div class="content">
+<div *ngIf="thing" class="content">
   <div class="area__details">
     <div class="name__lot">
       {{thing.name}}
     </div>
     <div class="left__area">
-      Expiration date: {{thing.endDate}}
-      <img (click)="showModal()" src="{{thing.picture}}" width="400" height="450">
+      Дата завершения торгов: {{thing.sellingTime | date : 'dd/MM/yy HH:mm'}}
+      <img [src]="'data:image/jpg;base64,'+ thing.picture" width="400" height="450">
     </div>
     <div class="right__area">
       <div class="price__amount">
-        Price: {{thing.price}}
-        <button class="amount_bttn" pButton label="Amount of bets"></button>
+        Цена: {{thing.minPrice}}
+        <button (click)="showModal()" class="amount_bttn" pButton label="Подробнее о ставках"></button>
         <input type="number" [(ngModel)]="newThingPrice">
-        <button class="bet_bttn" pButton label="Bet!"></button>
+        <button class="bet_bttn" (click)="updateThing()" pButton label="Подтвердить!"></button>
       </div>
     </div>
 
   </div>
   <div class="description__thing">
-    <p>Description</p>
+    <p>Описание</p>
     {{thing.description}}
   </div>
   <div class="bttn_put_lot">
-    <button pButton (click)="goToAddThing()" label="Put a lot"></button>
+    <button pButton (click)="goToAddThing()" label="Поставить лот"></button>
   </div>
 </div>
+<p-dialog header="Ставки" [(visible)]="display" [modal]="true" [style]="{width: '450px', minWidth: '200px'}" [minY]="70"
+          [baseZIndex]="10000">
+  <table>
+    <thead>
+    <tr>
+      <td>Имя пользователя</td>
+      <td>Время</td>
+      <td>Ставка</td>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let override of overrides">
+        <td>{{override.name}}</td>
+        <td>{{override.otime}}</td>
+        <td>{{override.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+  </p-footer>
+</p-dialog>

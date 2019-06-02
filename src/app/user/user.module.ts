@@ -7,21 +7,21 @@ import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
-import {AddCardComponent} from './add-card/add-card.component';
+import {InputTextModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
     AuthorizationComponent,
     UserDetailsComponent,
-    RegistrationComponent,
-    AddCardComponent
+    RegistrationComponent
   ],
   imports: [
     CommonModule,
     PasswordModule,
     ButtonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    InputTextModule
   ]
 })
 export class UserModule { }

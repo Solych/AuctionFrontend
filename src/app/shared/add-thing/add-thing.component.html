@@ -1,29 +1,29 @@
 <app-header></app-header>
 <div class="content">
   <div class="area_creating">
-    <p class="creating_lot">Lot creation</p>
+    <p class="creating_lot">Выставление лота</p>
     <div class="data__creation">
-      <p>Data</p>
+      <p>Данные</p>
       <div class="data">
-        <input pInput type="text" placeholder="Name" maxlength="30" [(ngModel)]="name" id="input_name">
-        <p-dropdown [(ngModel)]="selectedCategory" placeholder="Select a category" [options]="categories"></p-dropdown>
+        <input pInput type="text" placeholder="Название" maxlength="30" [(ngModel)]="name" id="input_name">
+        <p-dropdown [(ngModel)]="selectedCategory" placeholder="Выберите категорию" [options]="categories"></p-dropdown>
         <input (change)="fileUploaded($event)" accept=".jpg, .jpeg, .png" type="file" id="file" style="display: none">
-        <label for="file">Select a file</label>
+        <label for="file">Выберите изображение лота</label>
       </div>
     </div>
     <div class="price__date">
-      <p>Price, date</p>
+      <p>Цена, дата</p>
       <div class="union__fields">
-        <input pInput placeholder="Price" min="0" type="text" [(ngModel)]="price">
-        <p-calendar [(ngModel)]="date" placeholder="Expiration date" [showTime]="true"></p-calendar>
+        <input pInput placeholder="Цена" min="0" type="text" [(ngModel)]="price">
+        <p-calendar [(ngModel)]="date" placeholder="Дата завершения торгов" [showTime]="true"></p-calendar>
       </div>
     </div>
     <div class="description__creation">
-      <p>Description</p>
+      <p>Описание</p>
       <textarea pInputTextarea [(ngModel)]="description"></textarea>
     </div>
     <div class="button__put">
-      <button pButton style="float: right" (click)="save()" label="Confirm" ></button>
+      <button pButton style="float: right" (click)="save()" label="Подтвердить" ></button>
     </div>
   </div>
 </div>
