@@ -1,6 +1,6 @@
 export const severitySuccess = 'success';
 export const severityError = 'error';
-export const invalidForm = 'Заполните необходимые поля';
+export const lowPrice = 'Цена не может быть меньше 1';
 export const invalidCredentials = 'Неправильный логин или пароль';
 export const invalidPassword = 'Пароли не одинаковые';
 export const alreadyOnFirstPage = 'Вы уже находитесь на 1 странице';
@@ -9,3 +9,6 @@ export const errorCreate = 'Что-то пошло не так';
 export const betsNotFound = 'Ставки на данный лот отсутствуют';
 export const severityInfo = 'info';
 export const tooLowBet = 'Ставка не может быть меньше нынешней цены!';
+export const chooseCategory  = 'Выберите категорию товара';
+export const invalidDate = 'Время торгов не может быть отрицательно';
+export const invalidName = 'Длина имени не должна быть больше 30!';
