@@ -12,8 +12,10 @@
       <div class="price__amount">
         Цена: {{thing.minPrice}}
         <button (click)="showModal()" class="amount_bttn" pButton label="Подробнее о ставках"></button>
-        <input type="number" [(ngModel)]="newThingPrice">
-        <button class="bet_bttn" (click)="updateThing()" pButton label="Подтвердить!"></button>
+        <input *ngIf="!thing.message" type="number" [(ngModel)]="newThingPrice">
+        <button *ngIf="!thing.message" class="bet_bttn" [disabled]="isLogged" (click)="updateThing()"
+                pButton label="Подтвердить!"></button>
+        <p *ngIf="thing.message">{{thing.message}}</p>
       </div>
     </div>
 
@@ -26,25 +28,25 @@
     <button pButton (click)="goToAddThing()" label="Поставить лот"></button>
   </div>
 </div>
-<p-dialog header="Ставки" [(visible)]="display" [modal]="true" [style]="{width: '450px', minWidth: '200px'}" [minY]="70"
+<p-dialog header="Ставки" [(visible)]="display" [modal]="true" [style]="{width: '750px', minWidth: '200px'}" [minY]="70"
           [baseZIndex]="10000">
-  <table>
+  <table class="table_modal">
     <thead>
     <tr>
-      <td>Имя пользователя</td>
-      <td>Время</td>
+      <td>Имя </td>
       <td>Ставка</td>
+      <td>Время</td>
     </tr>
     </thead>
     <tbody>
       <tr *ngFor="let override of overrides">
         <td>{{override.name}}</td>
-        <td>{{override.otime}}</td>
         <td>{{override.price}}</td>
+        <td>{{override.otime | date: 'dd/MM/yy HH:mm'}}</td>
       </tr>
     </tbody>
   </table>
   <p-footer>
-    <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+    <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Ok"></button>
   </p-footer>
 </p-dialog>

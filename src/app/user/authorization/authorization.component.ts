@@ -29,7 +29,7 @@ export class AuthorizationComponent implements OnInit {
     this.userService.login(new Admission(this.username, this.password)).subscribe((data: any) => {
       localStorage.setItem('token', data.token);
       this.route.navigate(['auction']);
-      this.sharedService.isLogged.emit(true);
+      this.sharedService.isLogged.next(true);
     }, error => {
       this.helperService.showMsg(severityError, invalidCredentials);
       this.password = null;

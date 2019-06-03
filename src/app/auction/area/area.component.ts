@@ -55,7 +55,7 @@ export class AreaComponent implements OnInit {
   }
 
   goToPreviousPage() {
-    if (this.page === 1) {
+    if (this.page === 0) {
       this.helperService.showMsg(severityError, alreadyOnFirstPage);
       return;
     }

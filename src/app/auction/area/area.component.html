@@ -21,7 +21,7 @@
     </ul>
     <div *ngIf="selectedCategory">
       <button pButton style="float:left" icon="pi pi-step-backward" (click)="goToPreviousPage()" label="Предыдущая страница"></button>
-      <button pButton icon="pi pi-step-forward" style="float: right" (click)="goToNextPage()" label="Следующая страница"></button>
+      <button pButton icon="pi pi-step-forward" style="float: right" [disabled]="lots && lots.length !== 24" (click)="goToNextPage()" label="Следующая страница"></button>
     </div>
     <div class="bttn_random_lot">
       <button pButton icon="pi pi-question" (click)="thingDetailRandom()" label="Перейти к случайному лоту"></button>

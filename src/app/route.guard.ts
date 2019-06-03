@@ -15,12 +15,12 @@ export class RouteGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const token = localStorage.getItem('token');
     if (!token) {
-      this.sharedService.isLogged.emit(false);
+      this.sharedService.isLogged.next(false);
       this.router.navigate(['login']);
       return false;
     }
     if (new Date().getTime() > this.helperService.getExpirationDate()) {
-      this.sharedService.isLogged.emit(false);
+      this.sharedService.isLogged.next(false);
       localStorage.removeItem('token');
       this.router.navigate(['login']);
       return false;

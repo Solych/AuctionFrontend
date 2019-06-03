@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {SharedService} from '../shared.service';
+import {HelperService} from '../helper.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,12 @@ export class HeaderComponent implements OnInit {
   name: string;
   isLogged: boolean;
 
-  constructor(private router: Router, private sharedService: SharedService) {
-    this.isLogged = false;
+  constructor(private router: Router, private sharedService: SharedService, private helperService: HelperService) {
   }
 
   ngOnInit() {
-    this.sharedService.isLogged.subscribe(data => {
+    this.isLogged = this.helperService.isLogged();
+    this.sharedService.getIsLogged().subscribe((data: boolean) => {
       this.isLogged = data;
     });
   }
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   search() {
-    this.sharedService.name.emit(this.name);
+    this.sharedService.name.next(this.name);
     this.router.navigate(['auction']);
   }
 
