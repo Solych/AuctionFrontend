@@ -1,4 +1,13 @@
 <app-header></app-header>
-<p>
-  user-details works!
-</p>
+<p *ngIf="lots && lots.length > 0">История выставления лотов</p>
+<table>
+  <tbody>
+  <tr *ngFor="let lot of lots">
+    <td>{{lot.picture}}</td>
+    <td>{{lot.name}}</td>
+    <td>{{lot.minPrice}}</td>
+    <td>{{lot.dateOfPut | date}}</td>
+    <td>{{lot.category.categoryName}}</td>
+  </tr>
+  </tbody>
+</table>

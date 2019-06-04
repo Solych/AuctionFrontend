@@ -8,6 +8,7 @@ import {ButtonModule} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {InputTextModule} from 'primeng/primeng';
+import {ChartModule} from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {InputTextModule} from 'primeng/primeng';
     ButtonModule,
     FormsModule,
     SharedModule,
-    InputTextModule
+    InputTextModule,
+    ChartModule
   ]
 })
 export class UserModule { }

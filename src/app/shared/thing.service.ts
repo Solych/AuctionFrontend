@@ -37,7 +37,26 @@ export class ThingService {
     return this.httpClient.get(`http://localhost:8080/thing/getRandomIdOfThing`);
   }
 
-  update(thing: Thing) {
-    return this.httpClient.put('http://localhost:8080/thing/update', thing);
+  update(thingId: number, buyerId: number, time: number, price: number) {
+    return this.httpClient.put('http://localhost:8080/thing/update', {
+      buyer:
+        {
+          buyerId: buyerId
+        },
+      thing:
+        {
+          thingId: thingId
+        },
+      overrideTime: time,
+      price: price
+    });
+  }
+
+  getThingsByOwner(ownerId: number) {
+    return this.httpClient.get(`http://localhost:8080/thing/getAllByUser/${ownerId}`);
+  }
+
+  getDataOfCategories(ownerId: number) {
+    return this.httpClient.get(`http://localhost:8080/user/category/${ownerId}`);
   }
 }

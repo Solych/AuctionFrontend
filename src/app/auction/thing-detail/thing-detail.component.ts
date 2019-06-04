@@ -58,7 +58,7 @@ export class ThingDetailComponent implements OnInit {
         this.thing.minPrice = data.minPrice;
         return;
       }
-      //this.thingService.update(thing);
+      this.thingService.update(this.thing.thingId, this.helperService.getOwnerIdFromStorage(), new Date().getTime(), this.newThingPrice);
     });
   }
 

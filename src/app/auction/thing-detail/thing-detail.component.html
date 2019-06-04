@@ -15,7 +15,7 @@
         <input *ngIf="!thing.message" type="number" [(ngModel)]="newThingPrice">
         <button *ngIf="!thing.message" class="bet_bttn" [disabled]="isLogged" (click)="updateThing()"
                 pButton label="Подтвердить!"></button>
-        <p *ngIf="thing.message">{{thing.message}}</p>
+        <p *ngIf="thing.message && isYourOwnLot()">{{thing.message}}</p>
       </div>
     </div>
 
