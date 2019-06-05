@@ -5,7 +5,7 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  public name = new BehaviorSubject('temp');
+  public name = new BehaviorSubject('');
   public isLogged = new BehaviorSubject(false);
   constructor() { }
 

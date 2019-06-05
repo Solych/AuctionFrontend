@@ -102,7 +102,10 @@ export class AreaComponent implements OnInit {
   }
 
   private listenSearchedName() {
-    this.sharedService.name.subscribe(data => {
+    this.sharedService.getName().subscribe(data => {
+      if(data === '') {
+        return;
+      }
       this.getLotsByNameFromService(data);
     });
   }

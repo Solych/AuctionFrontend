@@ -6,5 +6,5 @@
   </div>
   <button *ngIf="!isLogged" class="login_bttn" pButton label="Войти" (click)="goToLogin()"></button>
   <button *ngIf="isLogged" class="login_bttn" icon="pi pi-home" pButton label="Аккаунт" (click)="goToUserDetails()" ></button>
-  <button pButton label="Помощь" icon="pi pi-info" class="help_bttn" (click)="help()"></button>
+  <button pButton label="Выставить свой лот" [disabled]="!isLogged" icon="pi pi-info" class="help_bttn" (click)="put()"></button>
 </div>

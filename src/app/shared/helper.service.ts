@@ -17,17 +17,22 @@ export class HelperService {
   }
 
   public getOwnerIdFromStorage() {
-    return this.getToken().sub;
+    const payload = this.getToken();
+    return payload ? payload.sub : null;
   }
 
   private getToken() {
     const token = localStorage.getItem('token');
+    if(!token) {
+      return;
+    }
     const payload = token.split('.')[1];
     return JSON.parse(atob(payload));
   }
 
   public getExpirationDate() {
-    return this.getToken().exp;
+    const payload = this.getToken();
+    return payload ? payload.exp : null;
   }
 
   public isLogged() {

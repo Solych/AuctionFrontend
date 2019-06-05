@@ -1,5 +1,6 @@
 <app-header></app-header>
 <p *ngIf="lots && lots.length > 0">История выставления лотов</p>
+<p *ngIf="!lots || lots.length == 0">У вас нет выставленных лотов</p>
 <table>
   <tbody>
   <tr *ngFor="let lot of lots">
@@ -11,3 +12,4 @@
   </tr>
   </tbody>
 </table>
+<p-chart type="polarArea" [data]="countsCategory"></p-chart>

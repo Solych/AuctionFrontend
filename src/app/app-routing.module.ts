@@ -4,7 +4,6 @@ import {RegistrationComponent} from './user/registration/registration.component'
 import {AuthorizationComponent} from './user/authorization/authorization.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {ThingDetailComponent} from './auction/thing-detail/thing-detail.component';
-import {HelpComponent} from './shared/help/help.component';
 import {AreaComponent} from './auction/area/area.component';
 import {AddThingComponent} from './shared/add-thing/add-thing.component';
 import {RouteGuard} from './route.guard';
@@ -25,10 +24,6 @@ const routes: Routes = [
   {
     path: 'thing/:id',
     component: ThingDetailComponent
-  },
-  {
-    path: 'help',
-    component: HelpComponent
   },
   {
     path: 'auction',
