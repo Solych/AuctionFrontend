@@ -3,7 +3,7 @@
   <h3>Вход в аккаунт</h3>
   <div class="inputs_buttons">
     <input type="text" pInputText [(ngModel)]="username" name="username" placeholder="Логин" required>
-    <input type="password" pPassword [(ngModel)]="password" name="password" placeholder="Пароль" required/>
+    <input type="password" pInputText [(ngModel)]="password" name="password" placeholder="Пароль" required/>
     <button type="button" pButton (click)="login()" [disabled]="form.invalid" class="buttons login_bttn_login" label="Вход"></button>
     <button type="button" pButton (click)="register()" class="buttons" label="Регистрация"></button>
   </div>

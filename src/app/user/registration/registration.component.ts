@@ -4,7 +4,7 @@ import {HelperService} from '../../shared/helper.service';
 import {UserService} from '../../shared/user.service';
 import {NgForm} from '@angular/forms';
 import {User} from '../../shared/model/User';
-import {invalidPassword, severityError} from '../../constants/Constants';
+import {invalidMailOrUsername, invalidPassword, severityError, severitySuccess, successRegister} from '../../constants/Constants';
 
 @Component({
   selector: 'app-registration',
@@ -34,9 +34,10 @@ export class RegistrationComponent implements OnInit {
     }
 
     this.userService.register(new User(this.username, this.mail, this.password1, this.place)).subscribe(data => {
-      this.route.navigate(['auction']);
+      this.helperService.showMsg(severitySuccess, successRegister);
+      this.route.navigate(['login']);
     }, error => {
-      this.helperService.showMsg(severityError, error.error.message);
+      this.helperService.showMsg(severityError, invalidMailOrUsername);
       this.registrationForm.reset();
     });
   }

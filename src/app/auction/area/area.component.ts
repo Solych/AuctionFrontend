@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ThingService} from '../../shared/thing.service';
 import {HelperService} from '../../shared/helper.service';
-import {alreadyOnFirstPage, severityError} from '../../constants/Constants';
+import {alreadyOnFirstPage, notFoundThingByName, severityError, severityInfo} from '../../constants/Constants';
 import {Thing} from '../../shared/model/Thing';
 import {CategoryService} from '../../shared/category.service';
 import {Category} from '../../shared/model/Category';
@@ -103,7 +103,7 @@ export class AreaComponent implements OnInit {
 
   private listenSearchedName() {
     this.sharedService.getName().subscribe(data => {
-      if(data === '') {
+      if (data === '') {
         return;
       }
       this.getLotsByNameFromService(data);
@@ -113,7 +113,7 @@ export class AreaComponent implements OnInit {
   private getLotsByNameFromService(name: string) {
     this.thingService.getThingsByName(name).subscribe((data: Thing[]) => {
       this.lots = data;
-    });
+    }, () => this.helperService.showMsg(severityInfo, notFoundThingByName));
   }
 
   private getThingsByCategory() {

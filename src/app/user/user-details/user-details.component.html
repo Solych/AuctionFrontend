@@ -1,13 +1,13 @@
 <app-header></app-header>
 <p *ngIf="lots && lots.length > 0">История выставления лотов</p>
 <p *ngIf="!lots || lots.length == 0">У вас нет выставленных лотов</p>
-<table>
+<table class="table_details">
   <tbody>
   <tr *ngFor="let lot of lots">
-    <td>{{lot.picture}}</td>
+    <td><img width="150" height="100" [src]="'data:image/jpg;base64,' + lot.picture"></td>
     <td>{{lot.name}}</td>
     <td>{{lot.minPrice}}</td>
-    <td>{{lot.dateOfPut | date}}</td>
+    <td>{{lot.dateOfPut | date : 'dd/MM/yy HH:mm'}}</td>
     <td>{{lot.category.categoryName}}</td>
   </tr>
   </tbody>

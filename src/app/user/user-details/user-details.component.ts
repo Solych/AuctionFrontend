@@ -41,7 +41,7 @@ export class UserDetailsComponent implements OnInit {
         label: 'График выставленных лотов и категорий'
       }],
         labels: _.map(data, 'cname')
-    }
+    };
   }
 
   private countOverridesByMonths() {
