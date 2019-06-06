@@ -1,10 +1,22 @@
 <app-header></app-header>
-<p *ngIf="lots && lots.length > 0">История выставления лотов</p>
-<p *ngIf="!lots || lots.length == 0">У вас нет выставленных лотов</p>
+<div *ngIf="wantSeeGraphOfLot">
+  <p-chart type="line" [data]="data"></p-chart>
+</div>
+<h1 *ngIf="lots && lots.length > 0">История выставления лотов</h1>
+<h1 *ngIf="!lots || lots.length == 0">У вас нет выставленных лотов</h1>
 <table class="table_details">
+  <thead class="thead_table">
+    <tr class="tr_table">
+      <td>Изображение</td>
+      <td>Название</td>
+      <td>Начальная цена</td>
+      <td>Дата выставления</td>
+      <td>Категория</td>
+    </tr>
+  </thead>
   <tbody>
   <tr *ngFor="let lot of lots">
-    <td><img width="150" height="100" [src]="'data:image/jpg;base64,' + lot.picture"></td>
+    <td><img width="150" height="100" (click)="loadDataForImage(lot.thingId)" [src]="'data:image/jpg;base64,' + lot.picture"></td>
     <td>{{lot.name}}</td>
     <td>{{lot.minPrice}}</td>
     <td>{{lot.dateOfPut | date : 'dd/MM/yy HH:mm'}}</td>
@@ -12,4 +24,9 @@
   </tr>
   </tbody>
 </table>
-<p-chart type="polarArea" [data]="countsCategory"></p-chart>
+
+<div *ngIf="countsCategory">
+  <h1>Статистика ставок на отдельные категории</h1>
+  <p-chart type="polarArea" [data]="countsCategory"></p-chart>
+</div>
+

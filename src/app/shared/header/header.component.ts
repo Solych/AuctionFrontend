@@ -16,9 +16,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLogged = this.helperService.isLogged();
     this.sharedService.getIsLogged().subscribe((data: boolean) => {
       this.isLogged = data;
+      if (!this.isLogged) {
+        this.isLogged = this.helperService.isLogged();
+      }
     });
   }
 

@@ -23,7 +23,7 @@ export class HelperService {
 
   private getToken() {
     const token = localStorage.getItem('token');
-    if(!token) {
+    if (!token) {
       return;
     }
     const payload = token.split('.')[1];

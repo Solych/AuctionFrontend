@@ -4,6 +4,8 @@ import {ThingService} from '../../shared/thing.service';
 import {Thing} from '../../shared/model/Thing';
 import {CountCategory} from '../../shared/model/CountCategory';
 import * as _ from 'lodash';
+import {Overrides} from '../../shared/model/Overrides';
+import {notFoundAnyOverrides, severityInfo} from '../../constants/Constants';
 
 @Component({
   selector: 'app-user-details',
@@ -14,8 +16,13 @@ export class UserDetailsComponent implements OnInit {
   lots: Thing[];
   countsCategory: any;
   colors: string[];
+  wantSeeGraphOfLot: boolean;
+  data: any;
   constructor(private helperService: HelperService, private thingService: ThingService) {
-    this.initializeColors();
+    this.wantSeeGraphOfLot = false;
+    this.colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c',
+      '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075',
+      '#808080', '#ffffff', '#000000'];
   }
 
   ngOnInit() {
@@ -27,10 +34,16 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  private initializeColors() {
-    this.colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c',
-      '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075',
-      '#808080', '#ffffff', '#000000'];
+  loadDataForImage(thingId: number) {
+    this.thingService.getOverrides(thingId).subscribe((data: Overrides[]) => {
+      if (!data.length) {
+        this.wantSeeGraphOfLot = false;
+        this.helperService.showMsg(severityInfo, notFoundAnyOverrides);
+        return;
+      }
+      this.data = this.modifyDataToLineChart(data);
+      this.wantSeeGraphOfLot = true;
+    });
   }
 
   private modifyDataToChart(data: CountCategory[]) {
@@ -44,8 +57,17 @@ export class UserDetailsComponent implements OnInit {
     };
   }
 
-  private countOverridesByMonths() {
-
+  private modifyDataToLineChart(data: Overrides[]) {
+    return {
+      labels: _.map(data, 'name'),
+      datasets: [
+        {
+          label: 'Ставки на лот',
+          data: _.map(data, 'price'),
+          fill: false,
+          borderColor: '#0373b5'
+        }
+      ]
+    };
   }
-
 }

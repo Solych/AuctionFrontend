@@ -17,3 +17,4 @@ export const itsYourOwnLot = 'Операция невозможна из-за в
 export const successRegister = 'Регистрация успешна';
 export const invalidMailOrUsername = 'Введенное имя пользователя или почтовый ящик уже заняты';
 export const notFoundThingByName = 'Подходящих вещей не найдено';
+export const notFoundAnyOverrides = 'Не найдено ставок на данный лот';
