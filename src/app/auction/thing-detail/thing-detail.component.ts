@@ -80,6 +80,6 @@ export class ThingDetailComponent implements OnInit {
   }
 
   private isYourOwnLot() {
-    return this.helperService.getOwnerIdFromStorage() === this.thing.owner.buyerId;
+    return +this.helperService.getOwnerIdFromStorage() === this.thing.owner.buyerId;
   }
 }

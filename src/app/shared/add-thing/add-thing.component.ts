@@ -49,7 +49,7 @@ export class AddThingComponent implements OnInit {
       this.helperService.showMsg(severityError, invalidDate);
       return;
     }
-    if (this.name.length > 30) {
+    if (this.name && this.name.length > 30) {
       this.helperService.showMsg(severityError, invalidName);
       return;
     }

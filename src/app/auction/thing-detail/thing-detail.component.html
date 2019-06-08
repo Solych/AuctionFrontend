@@ -12,8 +12,8 @@
       <div class="price__amount">
         Цена: {{thing.minPrice}}
         <button (click)="showModal()" class="amount_bttn" pButton label="Подробнее о ставках"></button>
-        <input *ngIf="!thing.message" type="number" [(ngModel)]="newThingPrice">
-        <button *ngIf="!thing.message" class="bet_bttn" [disabled]="isLogged" (click)="updateThing()"
+        <input [disabled]="thing.message" type="number" [(ngModel)]="newThingPrice">
+        <button [disabled]="thing.message" class="bet_bttn" (click)="updateThing()"
                 pButton label="Подтвердить!"></button>
         <p *ngIf="thing.message && isYourOwnLot()">{{thing.message}}</p>
       </div>
