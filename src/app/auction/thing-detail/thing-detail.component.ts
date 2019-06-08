@@ -6,7 +6,15 @@ import {ThingService} from '../../shared/thing.service';
 import {Overrides} from '../../shared/model/Overrides';
 import {Subscription} from 'rxjs';
 import {HelperService} from '../../shared/helper.service';
-import {betsNotFound, itsYourOwnLot, needsAuthorization, severityError, severityInfo, tooLowBet} from '../../constants/Constants';
+import {
+  betsNotFound,
+  itsYourOwnLot,
+  needsAuthorization,
+  severityError,
+  severityInfo,
+  severitySuccess, successPutBet,
+  tooLowBet
+} from '../../constants/Constants';
 
 @Component({
   selector: 'app-thing-detail',
@@ -58,7 +66,12 @@ export class ThingDetailComponent implements OnInit {
         this.thing.minPrice = data.minPrice;
         return;
       }
-      this.thingService.update(this.thing.thingId, this.helperService.getOwnerIdFromStorage(), new Date().getTime(), this.newThingPrice);
+      this.thingService.update(this.thing.thingId, this.helperService.getOwnerIdFromStorage(), new Date().getTime(), this.newThingPrice)
+        .subscribe(updateData => {
+        this.thing.minPrice = this.newThingPrice;
+        this.newThingPrice += 1;
+        this.helperService.showMsg(severitySuccess, successPutBet);
+      });
     });
   }
 

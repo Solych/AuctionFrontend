@@ -33,13 +33,13 @@ export class AreaComponent implements OnInit {
 
   sortByDate() {
     this.lots.sort(function (object1, object2) {
-      return object1.expired.toLocaleDateString() > object2.expired.toLocaleDateString() ? 1 : -1;
+      return object1.sellingTime > object2.sellingTime ? 1 : -1;
     });
   }
 
   sortByPrice() {
     this.lots.sort(function (object1, object2) {
-      return object1.price > object2.price ? 1 : -1;
+      return object1.minPrice > object2.minPrice ? 1 : -1;
     });
   }
 

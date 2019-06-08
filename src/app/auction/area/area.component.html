@@ -2,7 +2,7 @@
 <div class="content">
   <div class="categories">
     <p-listbox [options]="categories" (onChange)="changeCategory()" [(ngModel)]="selectedCategory"></p-listbox>
-    <div class="filters" *ngIf="selectedCategory && lots && lots.length > 20">
+    <div class="filters" *ngIf="selectedCategory && lots && lots.length > 8">
       Фильтры
       <button (click)="sortByName()" pButton label="По имени"></button>
       <button pButton (click)="sortByDate()" label="По дате"></button>

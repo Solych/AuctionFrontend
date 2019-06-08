@@ -19,4 +19,8 @@ export class UserService {
   register(user: User): Observable<User> {
     return this.httpClient.post<User>('http://localhost:8080/user/register', user);
   }
+
+  getBets(userId: number) {
+    return this.httpClient.get(`http://localhost:8080/thing/prices/${userId}`);
+  }
 }
