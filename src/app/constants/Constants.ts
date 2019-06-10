@@ -18,3 +18,5 @@ export const invalidMailOrUsername = 'Введенное имя пользова
 export const notFoundThingByName = 'Подходящих вещей не найдено';
 export const notFoundAnyOverrides = 'Не найдено ставок на данный лот';
 export const successPutBet = 'Ставка успешно проставлена';
+export const notFoundPuttingLots = 'У вас нет выставленных лотов';
+export const notFoundBettingLots = 'Вы не делали ставки';

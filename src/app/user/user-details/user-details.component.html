@@ -2,28 +2,56 @@
 <div *ngIf="wantSeeGraphOfLot">
   <p-chart type="line" [data]="data"></p-chart>
 </div>
-<h1 *ngIf="lots && lots.length > 0">История выставления лотов</h1>
-<h1 *ngIf="!lots || lots.length == 0">У вас нет выставленных лотов</h1>
-<table class="table_details">
-  <thead class="thead_table">
-    <tr class="tr_table">
-      <td>Изображение</td>
-      <td>Название</td>
-      <td>Начальная цена</td>
-      <td>Дата выставления</td>
-      <td>Категория</td>
-    </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let lot of lots">
-    <td><img width="150" height="100" (click)="loadDataForImage(lot.thingId)" [src]="'data:image/jpg;base64,' + lot.picture"></td>
-    <td>{{lot.name}}</td>
-    <td>{{lot.minPrice}}</td>
-    <td>{{lot.dateOfPut | date : 'dd/MM/yy HH:mm'}}</td>
-    <td>{{lot.category.categoryName}}</td>
-  </tr>
-  </tbody>
-</table>
+<p-accordion (onOpen)="loadHistory()">
+  <p-accordionTab header="История выставления лотов">
+    <table class="table_details" *ngIf="lots && lots.length > 0">
+      <thead class="thead_table">
+      <tr class="tr_table">
+        <td>Изображение</td>
+        <td>Название</td>
+        <td>Начальная цена</td>
+        <td>Дата выставления</td>
+        <td>Категория</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let lot of lots">
+        <td>
+          <img width="150" height="100" (click)="loadDataForImage(lot.thingId)" [src]="'data:image/jpg;base64,' + lot.picture">
+          <h6 *ngIf="!lot.picture">Изображение отсутствует</h6>
+        </td>
+        <td>{{lot.name}}</td>
+        <td>{{lot.minPrice}}</td>
+        <td>{{lot.dateOfPut | date : 'dd/MM/yy HH:mm'}}</td>
+        <td>{{lot.category.categoryName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </p-accordionTab>
+</p-accordion>
+<p-accordion (onOpen)="loadBets()">
+  <p-accordionTab header="История ваших ставок">
+    <table class="table_details" *ngIf="bets && bets.length > 0">
+      <thead class="thead_table">
+      <tr class="tr_table">
+        <td>Изображение</td>
+        <td>Название</td>
+        <td>Начальная цена</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bet of bets">
+        <td>
+          <img width="150" height="100" (click)="routeForThing(bet.thingId)" [src]="'data:image/jpg;base64,' + bet.picture">
+          <h6 *ngIf="!bet.picture">Изображение отсутствует</h6>
+        </td>
+        <td>{{bet.thingname}}</td>
+        <td>{{bet.price}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </p-accordionTab>
+</p-accordion>
 
 <div *ngIf="countsCategory">
   <h1>Статистика ставок на отдельные категории</h1>

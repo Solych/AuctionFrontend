@@ -59,4 +59,8 @@ export class ThingService {
   getDataOfCategories(ownerId: number) {
     return this.httpClient.get(`http://localhost:8080/user/category/${ownerId}`);
   }
+
+  getUserOverrides(userId: number) {
+    return this.httpClient.get(`http://localhost:8080/user/prices/${userId}`);
+  }
 }
