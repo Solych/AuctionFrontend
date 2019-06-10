@@ -49,7 +49,7 @@ export class UserDetailsComponent implements OnInit {
         this.helperService.showMsg(severityInfo, notFoundBettingLots);
         return;
       }
-      this.bets = data;
+      this.bets = _.uniqBy(data, 'thingId');
     });
   }
 

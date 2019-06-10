@@ -45,8 +45,8 @@
           <img width="150" height="100" (click)="routeForThing(bet.thingId)" [src]="'data:image/jpg;base64,' + bet.picture">
           <h6 *ngIf="!bet.picture">Изображение отсутствует</h6>
         </td>
-        <td>{{bet.thingname}}</td>
-        <td>{{bet.price}}</td>
+        <td>{{bet.name}}</td>
+        <td>{{bet.minPrice}}</td>
       </tr>
       </tbody>
     </table>
